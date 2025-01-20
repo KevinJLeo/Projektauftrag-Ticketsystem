@@ -1,7 +1,7 @@
 {
     "java.project.referencedLibraries": [
-        "c:\\Users\\KeLeonard\\Documents\\2.Semester\\Projektauftrag Ticketsystem\\mysql-connector-j-9.0.0\\mysql-connector-j-9.0.0.jar",
-        "c:\\Users\\KeLeonard\\Documents\\2.Semester\\Projektauftrag Ticketsystem\\jBCrypt-0.4",
+        "**\\mysql-connector-j-9.0.0\\mysql-connector-j-9.0.0.jar",
+        "**\\jBCrypt-0.4",
         "jBCrypt-0.4/**/*.jar"
     ]
 }

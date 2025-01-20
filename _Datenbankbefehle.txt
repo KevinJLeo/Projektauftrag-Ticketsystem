@@ -10,3 +10,35 @@ CREATE TABLE Tickets (Ticket_ID INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL, Bes
 
 CREATE TABLE Kategorien(Kategorie_ID INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL, Kategoriebeschreibung VARCHAR(30));
 
+
+
+
+CREATE DATABASE ticketsystem;
+
+USE ticketsystem;
+
+CREATE TABLE Users (
+    User_ID INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    Username VARCHAR(30) NOT NULL,
+    Passwort VARCHAR(200) NOT NULL,
+    Email VARCHAR(50),
+    Rechte ENUM('Admin', 'Supporter', 'Benutzer') NOT NULL
+);
+
+CREATE TABLE Tickets (
+    Ticket_ID INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    Beschreibung VARCHAR(250),
+    Zeitstempel DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    Prioritaet ENUM('Hoch', 'Mittel', 'Niedrig') NOT NULL,
+    Ersteller INTEGER NOT NULL,
+    Kategorie_ID INTEGER,
+    Zustand ENUM('Neu', 'In Bearbeitung', 'Fertig') NOT NULL DEFAULT 'Neu',
+    Support_Notizen TEXT,
+    FOREIGN KEY (Ersteller) REFERENCES Users(User_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Kategorie_ID) REFERENCES Kategorien(Kategorie_ID) ON DELETE SET NULL
+);
+
+CREATE TABLE Kategorien (
+    Kategorie_ID INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    Kategoriebeschreibung VARCHAR(30) NOT NULL
+);
